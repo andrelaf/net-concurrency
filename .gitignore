@@ -427,3 +427,14 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# --- Frontend (Vite/React) ---
+frontend/dist/
+frontend/node_modules/
+*.local
+.vite/
+
+# Livro de referência (copyright) e projetos de exemplo originais .NET 6:
+# mantidos apenas localmente. As notas conceituais (docs/notes.md) são versionadas.
+docs/*.pdf
+docs/chapter*/
