@@ -24,6 +24,7 @@ export interface DemoInfo {
   supportsRun: boolean
   parameters: DemoParameter[]
   chapter?: string | null
+  since?: string | null
 }
 
 export interface MetricItem {

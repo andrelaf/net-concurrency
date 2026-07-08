@@ -52,7 +52,7 @@ public sealed class ParallelForDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Limit })
-    { Chapter = "Cap. 6 · Conceitos de Programação Paralela" };
+    { Chapter = "Cap. 6 · Conceitos de Programação Paralela", Since = ".NET 4.0" };
 
     public override Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

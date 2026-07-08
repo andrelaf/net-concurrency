@@ -71,7 +71,7 @@ public sealed class StartNewVsRunDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Tasks, DelayMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#" };
+    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

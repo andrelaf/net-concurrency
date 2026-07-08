@@ -100,6 +100,30 @@ vice-versa). Pergunte primeiro: *este código está esperando, ou computando?*
   *primeiro await interno*, antes de o trabalho real completar. Corrija com
   `.Unwrap()`. → demo *StartNew vs Run*.
 
+## Novidades recentes (.NET 6–10)
+
+APIs modernas que valem adotar (cada uma tem uma demo):
+
+- **`Task.WhenEach`** (.NET 9) — consuma tasks conforme completam com
+  `await foreach`, em O(n). Substitui o loop de `Task.WhenAny`, que é O(n²).
+  → demo *WhenAny loop vs WhenEach*.
+- **`System.Threading.Lock`** (.NET 9) — tipo dedicado a locking. O keyword
+  `lock` o reconhece (C# 13) e usa `EnterScope()`; mais rápido e seguro que
+  travar em um `object` cru. → demo *lock(object) vs Lock*.
+- **`Task.WaitAsync(timeout)`** (.NET 6) — aplica timeout a qualquer task sem o
+  idioma `WhenAny(work, Task.Delay(...))`, que vaza o timer e deixa o trabalho
+  órfão. → demo *Timeout manual vs WaitAsync*.
+- **`PeriodicTimer`** (.NET 6) — trabalho periódico async sem drift; substitui o
+  loop `while` + `Task.Delay`, cujo período vira `intervalo + tempo de trabalho`.
+  → demo *Delay loop vs PeriodicTimer*.
+- **TPL Dataflow** (`TransformBlock`/`ActionBlock`) — pipelines com paralelismo e
+  back-pressure por estágio, estágios sobrepostos. → demo *Pipeline vs Dataflow*.
+- **False sharing** (conceito de CPU) — contadores por thread na mesma cache line
+  se sabotam; dê padding (stride ou `[StructLayout(Size=64)]`).
+  → demo *False sharing*.
+- Menções honrosas: `CancellationTokenSource.CancelAsync` (.NET 8),
+  `Parallel.ForEachAsync` (.NET 6), `Interlocked.Or/And` (.NET 7).
+
 ## Regras de bolso
 
 1. I/O → async; CPU → paralelo; estado compartilhado → a primitiva certa.

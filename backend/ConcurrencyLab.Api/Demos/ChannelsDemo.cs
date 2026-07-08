@@ -70,7 +70,7 @@ public sealed class ChannelsDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Producers, Items })
-    { Chapter = "Cap. 7 · TPL e Dataflow" };
+    { Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET Core 3.0" };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

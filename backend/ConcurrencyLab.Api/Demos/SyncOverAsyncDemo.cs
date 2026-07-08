@@ -62,5 +62,5 @@ public sealed class SyncOverAsyncDemo : DemoBase
         },
         SupportsRun: false,
         Parameters: Array.Empty<DemoParameter>())
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#" };
+    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
 }

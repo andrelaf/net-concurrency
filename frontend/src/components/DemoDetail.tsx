@@ -14,6 +14,7 @@ export function DemoDetail({ demo }: { demo: DemoInfo }) {
             {demo.supportsRun ? 'executável' : 'ficha de estudo'}
           </span>
           {demo.chapter && <span className="chip chip-book">📖 {demo.chapter}</span>}
+          {demo.since && <span className="chip chip-since">⬆ {demo.since}</span>}
         </div>
         <h1>{demo.title}</h1>
         <p className="detail-summary">{demo.summary}</p>

@@ -58,7 +58,7 @@ public sealed class ConcurrentDictionaryDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, Keys })
-    { Chapter = "Cap. 9 · Coleções Concorrentes no .NET" };
+    { Chapter = "Cap. 9 · Coleções Concorrentes no .NET", Since = ".NET 4.0" };
 
     public override Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

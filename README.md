@@ -16,23 +16,30 @@ React deixa você ler o código, as notas e comparar os resultados lado a lado.
 
 ## O que tem dentro
 
-13 demos em 5 categorias (11 executáveis + 2 fichas de estudo):
+19 demos em 5 categorias (17 executáveis + 2 fichas de estudo). O chip ⬆ marca
+a versão do .NET em que a API do padrão foi introduzida:
 
-| Categoria | Demo | Antipadrão → Padrão |
-|---|---|---|
-| Fundamentos | Thread por item vs Task | `new Thread` por item → thread pool (`Task.Run`) |
-| Fundamentos | StartNew vs Run | `Task.Factory.StartNew(async …)` → `Task.Run` (unwrap automático) |
-| Coordenação Async | await sequencial vs WhenAll | `await` em loop → `Task.WhenAll` |
-| Coordenação Async | Throttling | fan-out ilimitado → `SemaphoreSlim` |
-| Coordenação Async | Cancelamento | ignorar o token → cancelamento cooperativo |
-| Paralelismo de Dados | Parallel.For | `for` sequencial → `Parallel.For` + local por thread |
-| Paralelismo de Dados | PLINQ | `LINQ` → `AsParallel()` |
-| Coleções e Mensageria | ConcurrentDictionary | `Dictionary` sob contenção → `ConcurrentDictionary` |
-| Coleções e Mensageria | Channels | fila com lock + poll → `System.Threading.Channels` |
-| Riscos | Condição de corrida | `count++` → `Interlocked.Increment` |
-| Riscos | Deadlock | ordem de locks inconsistente → ordem consistente |
-| Riscos | Sync-over-async *(ficha)* | `.Result`/`.Wait()` → async até o fim |
-| Riscos | `async void` *(ficha)* | `async void` → `async Task` |
+| Categoria | Demo | Antipadrão → Padrão | ⬆ |
+|---|---|---|---|
+| Fundamentos | Thread por item vs Task | `new Thread` por item → thread pool (`Task.Run`) | 4.5 |
+| Fundamentos | StartNew vs Run | `Task.Factory.StartNew(async …)` → `Task.Run` (unwrap automático) | 4.5 |
+| Fundamentos | lock(object) vs Lock | `lock(_obj)` → `System.Threading.Lock` | **9** |
+| Coordenação Async | await sequencial vs WhenAll | `await` em loop → `Task.WhenAll` | 4.5 |
+| Coordenação Async | WhenAny loop vs WhenEach | loop de `Task.WhenAny` (O(n²)) → `Task.WhenEach` | **9** |
+| Coordenação Async | Throttling | fan-out ilimitado → `SemaphoreSlim` | 4.0 |
+| Coordenação Async | Timeout manual vs WaitAsync | `WhenAny`+`Delay` → `Task.WaitAsync(timeout)` | 6 |
+| Coordenação Async | Delay loop vs PeriodicTimer | `while`+`Task.Delay` (drift) → `PeriodicTimer` | 6 |
+| Coordenação Async | Cancelamento | ignorar o token → cancelamento cooperativo | 4.0 |
+| Paralelismo de Dados | Parallel.For | `for` sequencial → `Parallel.For` + local por thread | 4.0 |
+| Paralelismo de Dados | PLINQ | `LINQ` → `AsParallel()` | 4.0 |
+| Paralelismo de Dados | False sharing | contadores adjacentes → padding de cache line | — |
+| Coleções e Mensageria | ConcurrentDictionary | `Dictionary` sob contenção → `ConcurrentDictionary` | 4.0 |
+| Coleções e Mensageria | Channels | fila com lock + poll → `System.Threading.Channels` | Core 3.0 |
+| Coleções e Mensageria | Pipeline manual vs Dataflow | estágios sequenciais → `TransformBlock`→`ActionBlock` | Dataflow |
+| Riscos | Condição de corrida | `count++` → `Interlocked.Increment` | 1.1 |
+| Riscos | Deadlock | ordem de locks inconsistente → ordem consistente | 1.0 |
+| Riscos | Sync-over-async *(ficha)* | `.Result`/`.Wait()` → async até o fim | 4.5 |
+| Riscos | `async void` *(ficha)* | `async void` → `async Task` | 4.5 |
 
 As *fichas de estudo* são riscos inseguros de executar em um servidor
 compartilhado (podem dar deadlock ou derrubar o processo), então são
@@ -82,7 +89,7 @@ net-concurrency/
 │     ├─ IConcurrencyDemo.cs       contrato + classe base de timing/log
 │     ├─ DemoModels.cs             records, RunArgs, ConcurrencyMeter, Workloads
 │     ├─ DemoRegistry.cs           o catálogo
-│     └─ *Demo.cs                  as 13 demos
+│     └─ *Demo.cs                  as 19 demos
 ├─ frontend/                       React 19 + Vite + TypeScript
 │  └─ src/
 │     ├─ api.ts                    cliente tipado espelhando os records C#
@@ -128,7 +135,7 @@ origem (o chip 📖), então o lab funciona como um companheiro do livro:
 | Cap. 3 — Best Practices for Managed Threading | Condição de corrida, Deadlock |
 | Cap. 5 — Asynchronous Programming with C# | WhenAll, StartNew vs Run, Sync-over-async, async void |
 | Cap. 6 — Parallel Programming Concepts | Parallel.For |
-| Cap. 7 — TPL and Dataflow | Channels produtor/consumidor |
+| Cap. 7 — TPL and Dataflow | Channels produtor/consumidor, Pipeline vs Dataflow |
 | Cap. 8 — Parallel Data Structures and PLINQ | LINQ vs PLINQ |
 | Cap. 9 — Concurrent Collections | Dictionary vs ConcurrentDictionary |
 | Cap. 11 — Canceling Asynchronous Work | Cancelamento cooperativo |

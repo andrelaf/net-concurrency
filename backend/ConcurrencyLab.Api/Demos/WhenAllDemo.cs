@@ -50,7 +50,7 @@ public sealed class WhenAllDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Calls, LatencyMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#" };
+    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
 
     // Chamada de I/O assíncrona simulada.
     private static Task<int> CallAsync(int latencyMs, CancellationToken ct) =>

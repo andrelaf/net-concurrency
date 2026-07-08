@@ -57,7 +57,7 @@ public sealed class ThreadVsTaskDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { WorkItems })
-    { Chapter = "Cap. 1 · Conceitos de Managed Threading" };
+    { Chapter = "Cap. 1 · Conceitos de Managed Threading", Since = ".NET 4.5" };
 
     // Pequena unidade de trabalho.
     private static void Process() => Workloads.Spin(200);

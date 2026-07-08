@@ -193,6 +193,11 @@
   border-color: rgba(167, 139, 250, 0.3);
   color: var(--accent-2);
 }
+.chip-since {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+  color: var(--pattern);
+}
 .detail h1 {
   font-size: 27px;
   letter-spacing: -0.02em;

@@ -33,6 +33,12 @@ public sealed record DemoInfo(
     /// concepts to .NET 10.
     /// </summary>
     public string? Chapter { get; init; }
+
+    /// <summary>
+    /// .NET version where the pattern's key API was introduced (e.g. ".NET 9").
+    /// Rendered as a chip so newer APIs stand out.
+    /// </summary>
+    public string? Since { get; init; }
 }
 
 /// <summary>A single key metric surfaced after a run (e.g. "Lost updates: 4213").</summary>

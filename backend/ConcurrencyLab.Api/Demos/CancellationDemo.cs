@@ -57,7 +57,7 @@ public sealed class CancellationDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Batches, CancelAfterMs })
-    { Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono" };
+    { Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono", Since = ".NET 4.0" };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

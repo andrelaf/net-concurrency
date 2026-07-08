@@ -49,7 +49,7 @@ public sealed class PlinqDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Size })
-    { Chapter = "Cap. 8 · Estruturas de Dados Paralelas e PLINQ" };
+    { Chapter = "Cap. 8 · Estruturas de Dados Paralelas e PLINQ", Since = ".NET 4.0" };
 
     // Kernel de CPU determinístico por elemento.
     private static double Score(int i) => Workloads.Spin(60) + (i % 7);

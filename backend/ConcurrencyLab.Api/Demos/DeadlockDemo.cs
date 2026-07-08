@@ -68,7 +68,7 @@ public sealed class DeadlockDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { HoldMs })
-    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading" };
+    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 1.0" };
 
     private sealed class Account(int id)
     {

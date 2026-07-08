@@ -78,5 +78,5 @@ public sealed class AsyncVoidDemo : DemoBase
         },
         SupportsRun: false,
         Parameters: Array.Empty<DemoParameter>())
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#" };
+    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
 }

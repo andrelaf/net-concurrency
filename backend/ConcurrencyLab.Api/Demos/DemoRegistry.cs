@@ -13,16 +13,22 @@ public sealed class DemoRegistry
             // Fundamentals
             new ThreadVsTaskDemo(),
             new StartNewVsRunDemo(),
+            new LockTypeDemo(),
             // Async Coordination
             new WhenAllDemo(),
+            new WhenEachDemo(),
             new SemaphoreThrottlingDemo(),
+            new WaitAsyncTimeoutDemo(),
+            new PeriodicTimerDemo(),
             new CancellationDemo(),
             // Data Parallelism
             new ParallelForDemo(),
             new PlinqDemo(),
+            new FalseSharingDemo(),
             // Collections & Messaging
             new ConcurrentDictionaryDemo(),
             new ChannelsDemo(),
+            new DataflowDemo(),
             // Hazards
             new RaceConditionCounterDemo(),
             new DeadlockDemo(),

@@ -61,7 +61,7 @@ public sealed class RaceConditionCounterDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, PerWorker })
-    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading" };
+    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 1.1" };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {
