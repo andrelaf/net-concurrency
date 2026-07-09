@@ -16,7 +16,7 @@ React deixa você ler o código, as notas e comparar os resultados lado a lado.
 
 ## O que tem dentro
 
-19 demos em 5 categorias (17 executáveis + 2 fichas de estudo). O chip ⬆ marca
+28 demos em 6 categorias (26 executáveis + 2 fichas de estudo). O chip ⬆ marca
 a versão do .NET em que a API do padrão foi introduzida:
 
 | Categoria | Demo | Antipadrão → Padrão | ⬆ |
@@ -24,20 +24,29 @@ a versão do .NET em que a API do padrão foi introduzida:
 | Fundamentos | Thread por item vs Task | `new Thread` por item → thread pool (`Task.Run`) | 4.5 |
 | Fundamentos | StartNew vs Run | `Task.Factory.StartNew(async …)` → `Task.Run` (unwrap automático) | 4.5 |
 | Fundamentos | lock(object) vs Lock | `lock(_obj)` → `System.Threading.Lock` | **9** |
+| Fundamentos | Task vs ValueTask | `Task<T>` no caminho quente → `ValueTask<T>` (sem alocar) | Core 2.1 |
 | Coordenação Async | await sequencial vs WhenAll | `await` em loop → `Task.WhenAll` | 4.5 |
 | Coordenação Async | WhenAny loop vs WhenEach | loop de `Task.WhenAny` (O(n²)) → `Task.WhenEach` | **9** |
 | Coordenação Async | Throttling | fan-out ilimitado → `SemaphoreSlim` | 4.0 |
 | Coordenação Async | Timeout manual vs WaitAsync | `WhenAny`+`Delay` → `Task.WaitAsync(timeout)` | 6 |
 | Coordenação Async | Delay loop vs PeriodicTimer | `while`+`Task.Delay` (drift) → `PeriodicTimer` | 6 |
 | Coordenação Async | Cancelamento | ignorar o token → cancelamento cooperativo | 4.0 |
+| Coordenação Async | Async streams | `Task<List<T>>` (buffer) → `IAsyncEnumerable<T>` | Core 3.0 |
 | Paralelismo de Dados | Parallel.For | `for` sequencial → `Parallel.For` + local por thread | 4.0 |
 | Paralelismo de Dados | PLINQ | `LINQ` → `AsParallel()` | 4.0 |
 | Paralelismo de Dados | False sharing | contadores adjacentes → padding de cache line | — |
 | Coleções e Mensageria | ConcurrentDictionary | `Dictionary` sob contenção → `ConcurrentDictionary` | 4.0 |
 | Coleções e Mensageria | Channels | fila com lock + poll → `System.Threading.Channels` | Core 3.0 |
 | Coleções e Mensageria | Pipeline manual vs Dataflow | estágios sequenciais → `TransformBlock`→`ActionBlock` | Dataflow |
+| Pipelines e Padrões | Buffer manual vs System.IO.Pipelines | parsing com cópias O(n²) → `PipeReader` zero-copy | Core 2.1 |
+| Pipelines e Padrões | Passadas vs pipeline de Channels | estágios em série → `Channel`s encadeados paralelos | Core 3.0 |
+| Pipelines e Padrões | SemaphoreSlim vs RateLimiting | concorrência → taxa real (`TokenBucketRateLimiter`) | **7** |
+| Pipelines e Padrões | Scatter/Gather | consulta sequencial → fan-out/fan-in resiliente | 4.5 |
+| Pipelines e Padrões | Execução especulativa | fallback em cadeia → hedging (1ª resposta) | 4.5 |
 | Riscos | Condição de corrida | `count++` → `Interlocked.Increment` | 1.1 |
 | Riscos | Deadlock | ordem de locks inconsistente → ordem consistente | 1.0 |
+| Riscos | Exceções em WhenAll | só a 1ª exceção → todas via `AggregateException` | 4.5 |
+| Riscos | Lazy vs double-checked locking | check-and-create sem lock → `Lazy<T>` | 4.0 |
 | Riscos | Sync-over-async *(ficha)* | `.Result`/`.Wait()` → async até o fim | 4.5 |
 | Riscos | `async void` *(ficha)* | `async void` → `async Task` | 4.5 |
 
@@ -89,7 +98,7 @@ net-concurrency/
 │     ├─ IConcurrencyDemo.cs       contrato + classe base de timing/log
 │     ├─ DemoModels.cs             records, RunArgs, ConcurrencyMeter, Workloads
 │     ├─ DemoRegistry.cs           o catálogo
-│     └─ *Demo.cs                  as 19 demos
+│     └─ *Demo.cs                  as 28 demos
 ├─ frontend/                       React 19 + Vite + TypeScript
 │  └─ src/
 │     ├─ api.ts                    cliente tipado espelhando os records C#

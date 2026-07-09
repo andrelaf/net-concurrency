@@ -124,6 +124,31 @@ APIs modernas que valem adotar (cada uma tem uma demo):
 - Menções honrosas: `CancellationTokenSource.CancelAsync` (.NET 8),
   `Parallel.ForEachAsync` (.NET 6), `Interlocked.Or/And` (.NET 7).
 
+## Pipelines e padrões de alto nível
+
+Acima das primitivas, alguns padrões de composição (cada um com demo):
+
+- **`IAsyncEnumerable<T>` (async streams)** — transmita item a item em vez de
+  devolver `Task<List<T>>`; menor latência ao 1º item e menos memória.
+  → demo *Async streams*.
+- **`ValueTask<T>`** — em caminhos quentes que quase sempre completam síncronos,
+  evita alocar uma `Task` por chamada. Consuma só uma vez. → demo *Task vs ValueTask*.
+- **`System.IO.Pipelines`** (`PipeReader`/`SequenceReader`) — parsing de I/O sem
+  cópias e com back-pressure; é o motor do Kestrel. → demo *System.IO.Pipelines*.
+- **Pipeline de Channels** — encadeie um `Channel<T>` por fronteira de estágio;
+  as etapas rodam sobrepostas, cada uma com seu paralelismo. Alternativa leve ao
+  Dataflow. → demo *Pipeline de Channels*.
+- **`System.Threading.RateLimiting`** (.NET 7) — limite a **taxa** (req/s), não só
+  a concorrência; token bucket / sliding window com fila. → demo *RateLimiting*.
+- **Scatter/Gather (fan-out/fan-in)** — dispare as fontes em paralelo, isole cada
+  ramo (timeout + try/catch) e agregue resultados parciais. → demo *Scatter/Gather*.
+- **Execução especulativa (hedging)** — dispare réplicas redundantes, use a 1ª
+  resposta e cancele o resto; corta caudas de latência. → demo *Especulativa*.
+- **Tratamento de exceções** — `await Task.WhenAll` relança só a 1ª exceção;
+  guarde a task e leia `Exception.InnerExceptions` para ver todas. → demo *Exceções em WhenAll*.
+- **Inicialização thread-safe** — `Lazy<T>` em vez de double-checked locking na
+  mão. → demo *Lazy vs DCL*.
+
 ## Regras de bolso
 
 1. I/O → async; CPU → paralelo; estado compartilhado → a primitiva certa.
