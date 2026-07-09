@@ -64,7 +64,15 @@ public sealed class AggregateExceptionDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Tasks, FailEvery })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Operações em lote onde você precisa saber TODAS as falhas (ex.: importar N registros).",
+            "Fan-out para vários serviços com relatório de erros/observabilidade completo.",
+            "Retentar/compensar seletivamente só os itens que falharam.",
+        },
+    };
 
     private static Task Work(int i, int failEvery, CancellationToken ct) =>
         Task.Run(async () =>

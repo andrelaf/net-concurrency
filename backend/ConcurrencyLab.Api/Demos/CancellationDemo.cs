@@ -57,7 +57,15 @@ public sealed class CancellationDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Batches, CancelAfterMs })
-    { Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono", Since = ".NET 4.0" };
+    {
+        Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono", Since = ".NET 4.0",
+        UseCases = new[]
+        {
+            "Cancelar trabalho quando o cliente desconecta (HttpContext.RequestAborted).",
+            "Timeouts e botões 'cancelar' em operações longas.",
+            "Encerrar tarefas de background de forma limpa no shutdown do app.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

@@ -25,6 +25,7 @@ export interface DemoInfo {
   parameters: DemoParameter[]
   chapter?: string | null
   since?: string | null
+  useCases?: string[] | null
 }
 
 export interface MetricItem {

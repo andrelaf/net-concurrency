@@ -59,7 +59,15 @@ public sealed class ChannelPipelineDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Items })
-    { Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET Core 3.0" };
+    {
+        Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET Core 3.0",
+        UseCases = new[]
+        {
+            "Compor um pipeline leve de N estágios sem trazer o TPL Dataflow.",
+            "Processamento em fluxo com paralelismo por estágio (ex.: OCR → tradução → indexação).",
+            "Encadear etapas de I/O e CPU mantendo controle fino sobre buffers e cancelamento.",
+        },
+    };
 
     private static int Stage1(int x) => (int)(Workloads.Spin(300) % 997) + x;
     private static int Stage2(int x) => (int)(Workloads.Spin(300) % 991) + x;

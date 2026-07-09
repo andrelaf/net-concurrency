@@ -38,6 +38,17 @@ export function DemoDetail({ demo }: { demo: DemoInfo }) {
         </div>
       </div>
 
+      {demo.useCases && demo.useCases.length > 0 && (
+        <section className="usecases">
+          <h3>🎯 Quando usar (casos de uso)</h3>
+          <ul>
+            {demo.useCases.map((u, i) => (
+              <li key={i}>{u}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section className="takeaways">
         <h3>Pontos-chave</h3>
         <ul>

@@ -58,7 +58,15 @@ public sealed class ConcurrentDictionaryDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, Keys })
-    { Chapter = "Cap. 9 · Coleções Concorrentes no .NET", Since = ".NET 4.0" };
+    {
+        Chapter = "Cap. 9 · Coleções Concorrentes no .NET", Since = ".NET 4.0",
+        UseCases = new[]
+        {
+            "Cache em memória compartilhado entre requisições (memoização, lookup).",
+            "Contadores/agregações por chave sob concorrência (ex.: métricas por rota).",
+            "Registro de conexões/sessões ativas atualizado por várias threads.",
+        },
+    };
 
     public override Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

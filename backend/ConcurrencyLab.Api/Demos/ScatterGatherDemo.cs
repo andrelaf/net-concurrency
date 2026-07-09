@@ -57,7 +57,15 @@ public sealed class ScatterGatherDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Sources, LatencyMs })
-    { Chapter = null, Since = ".NET 4.5" };
+    {
+        Chapter = null, Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Agregadores (busca federada, comparador de preços) consultando N fontes.",
+            "Compor uma resposta a partir de vários serviços tolerando a falha de alguns.",
+            "Enriquecer um registro consultando várias APIs em paralelo com resultado parcial.",
+        },
+    };
 
     // A fonte 0 sempre falha; as demais respondem após sua latência.
     private static async Task<int> QuerySource(int index, int latencyMs, CancellationToken ct)

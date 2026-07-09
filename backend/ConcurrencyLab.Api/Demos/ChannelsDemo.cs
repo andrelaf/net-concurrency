@@ -70,7 +70,15 @@ public sealed class ChannelsDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Producers, Items })
-    { Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET Core 3.0" };
+    {
+        Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET Core 3.0",
+        UseCases = new[]
+        {
+            "Desacoplar produtores de consumidores (fila de trabalhos em background).",
+            "Ingestão de eventos: receber num ritmo e processar noutro, com back-pressure.",
+            "Buffer entre um webhook/hub (SignalR) e o processamento assíncrono.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

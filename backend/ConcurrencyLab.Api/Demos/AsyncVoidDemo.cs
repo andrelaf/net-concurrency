@@ -78,5 +78,13 @@ public sealed class AsyncVoidDemo : DemoBase
         },
         SupportsRun: false,
         Parameters: Array.Empty<DemoParameter>())
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Handlers de eventos de UI (o único uso legítimo de async void) — sempre com try/catch.",
+            "Em qualquer outro lugar, retorne Task para poder aguardar e observar erros.",
+            "Revisar código legado em busca de async void que possa derrubar o processo.",
+        },
+    };
 }

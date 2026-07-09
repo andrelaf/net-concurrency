@@ -63,7 +63,15 @@ public sealed class LazyInitDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, BuildMicros })
-    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 4.0" };
+    {
+        Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 4.0",
+        UseCases = new[]
+        {
+            "Inicialização cara e sob demanda de singletons (config, conexão, cliente HTTP).",
+            "Recursos que só devem ser criados no primeiro uso, de forma thread-safe.",
+            "Cache preguiçoso de valores calculados uma única vez.",
+        },
+    };
 
     // Roda 'body' em N threads de SO reais, todas liberadas juntas por uma barreira,
     // para maximizar a corrida sem depender da injeção lenta do thread pool.

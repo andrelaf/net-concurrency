@@ -50,7 +50,15 @@ public sealed class WhenAllDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Calls, LatencyMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Chamar vários microserviços/APIs independentes e agregar (tela de dashboard, checkout).",
+            "Buscar de várias fontes em paralelo (BD + cache + serviço externo).",
+            "Disparar N operações de I/O independentes e esperar todas terminarem.",
+        },
+    };
 
     // Chamada de I/O assíncrona simulada.
     private static Task<int> CallAsync(int latencyMs, CancellationToken ct) =>

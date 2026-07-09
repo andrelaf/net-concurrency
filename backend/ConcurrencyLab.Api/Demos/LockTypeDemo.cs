@@ -63,7 +63,15 @@ public sealed class LockTypeDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, PerWorker })
-    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 9" };
+    {
+        Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 9",
+        UseCases = new[]
+        {
+            "Proteger uma seção crítica curta em código novo (.NET 9+): use Lock.",
+            "Cache/estado em memória mutável acessado por várias threads.",
+            "Substituir gradualmente lock(_obj) legado onde há contenção real.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

@@ -66,7 +66,15 @@ public sealed class RateLimitingDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Requests, PerSecond })
-    { Chapter = null, Since = ".NET 7" };
+    {
+        Chapter = null, Since = ".NET 7",
+        UseCases = new[]
+        {
+            "Respeitar limites de req/s de APIs de terceiros (evitar 429/banimento).",
+            "Proteger seu próprio endpoint (middleware de rate limiting do ASP.NET Core).",
+            "Suavizar picos de tráfego para um recurso caro (BD, fila, serviço legado).",
+        },
+    };
 
     // Mede o pico de requisições iniciadas em qualquer janela de 1s (bins de 100ms).
     private static int PeakPerSecond(ConcurrentBag<long> startsMs)

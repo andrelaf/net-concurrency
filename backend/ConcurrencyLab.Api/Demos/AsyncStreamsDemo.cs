@@ -66,7 +66,15 @@ public sealed class AsyncStreamsDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Items, PerItemMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET Core 3.0" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET Core 3.0",
+        UseCases = new[]
+        {
+            "Paginação/streaming de BD ou API (entregar resultados conforme lê as páginas).",
+            "Processar arquivos grandes linha a linha sem carregar tudo na memória.",
+            "Server-Sent Events, gRPC streaming e leitura de tópicos (Kafka) contínua.",
+        },
+    };
 
     private static async Task<int> FetchAsync(int id, int ms, CancellationToken ct)
     {

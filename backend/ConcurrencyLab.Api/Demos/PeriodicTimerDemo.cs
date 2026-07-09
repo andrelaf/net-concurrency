@@ -59,7 +59,15 @@ public sealed class PeriodicTimerDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Ticks, IntervalMs, WorkMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 6" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 6",
+        UseCases = new[]
+        {
+            "Polling periódico (health check, ler uma fila a cada N segundos) sem drift.",
+            "BackgroundService que executa em cadência fixa (ex.: flush de métricas/cache).",
+            "Heartbeats e tarefas agendadas leves dentro do processo.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

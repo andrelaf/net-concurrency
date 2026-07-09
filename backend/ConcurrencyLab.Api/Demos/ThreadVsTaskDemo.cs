@@ -57,7 +57,15 @@ public sealed class ThreadVsTaskDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { WorkItems })
-    { Chapter = "Cap. 1 · Conceitos de Managed Threading", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 1 · Conceitos de Managed Threading", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Processar muitas tarefas curtas e independentes (ex.: redimensionar 1.000 imagens).",
+            "Disparar trabalho em paralelo sem gerenciar threads na mão.",
+            "Reserve uma Thread dedicada só para trabalho longo e contínuo (ex.: loop lendo uma porta serial).",
+        },
+    };
 
     // Pequena unidade de trabalho.
     private static void Process() => Workloads.Spin(200);

@@ -76,7 +76,15 @@ public sealed class IoPipelinesDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Messages })
-    { Chapter = null, Since = ".NET Core 2.1" };
+    {
+        Chapter = null, Since = ".NET Core 2.1",
+        UseCases = new[]
+        {
+            "Parsers de protocolo de rede de alta vazão (HTTP, mensageria binária).",
+            "Ler sockets/streams sem alocar, tratando mensagens que chegam partidas.",
+            "Servidores/proxies onde cada cópia de buffer conta (base do Kestrel).",
+        },
+    };
 
     private const byte Newline = (byte)'\n';
     private const int ChunkSize = 4096;

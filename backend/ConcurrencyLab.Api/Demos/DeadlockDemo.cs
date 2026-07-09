@@ -68,7 +68,15 @@ public sealed class DeadlockDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { HoldMs })
-    { Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 1.0" };
+    {
+        Chapter = "Cap. 3 · Boas Práticas de Managed Threading", Since = ".NET 1.0",
+        UseCases = new[]
+        {
+            "Sempre que uma operação adquire 2+ locks (ex.: transferência entre contas).",
+            "Ordenar a aquisição por um id estável em qualquer código com múltiplos locks.",
+            "Diagnosticar um endpoint que 'trava' com contagem de threads subindo.",
+        },
+    };
 
     private sealed class Account(int id)
     {

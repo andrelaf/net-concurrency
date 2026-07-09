@@ -63,7 +63,15 @@ public sealed class FalseSharingDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Workers, Iterations })
-    { Chapter = "Cap. 6 · Conceitos de Programação Paralela" };
+    {
+        Chapter = "Cap. 6 · Conceitos de Programação Paralela",
+        UseCases = new[]
+        {
+            "Contadores/estatísticas por thread em código de altíssima performance.",
+            "Estruturas de agregação paralela (histogramas, somas por partição).",
+            "Ao perfilar um laço paralelo que não escala apesar de dados independentes.",
+        },
+    };
 
     public override Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

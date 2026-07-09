@@ -52,7 +52,15 @@ public sealed class ParallelForDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Limit })
-    { Chapter = "Cap. 6 · Conceitos de Programação Paralela", Since = ".NET 4.0" };
+    {
+        Chapter = "Cap. 6 · Conceitos de Programação Paralela", Since = ".NET 4.0",
+        UseCases = new[]
+        {
+            "Processamento de imagem/vídeo, simulações e cálculos numéricos em lote.",
+            "Aplicar uma transformação pesada a cada item de uma coleção grande.",
+            "Qualquer laço CPU-bound cujas iterações sejam independentes.",
+        },
+    };
 
     public override Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

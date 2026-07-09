@@ -55,7 +55,15 @@ public sealed class SemaphoreThrottlingDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Jobs, Limit })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.0" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.0",
+        UseCases = new[]
+        {
+            "Limitar chamadas simultâneas a uma API com rate limit ou a um BD (pool de conexões).",
+            "Baixar/processar milhares de arquivos sem abrir tudo de uma vez.",
+            "Proteger um recurso caro (memória, CPU de GPU) de picos de concorrência.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

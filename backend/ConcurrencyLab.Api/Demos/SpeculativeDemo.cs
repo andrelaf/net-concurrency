@@ -61,7 +61,15 @@ public sealed class SpeculativeDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Replicas, BaseLatencyMs })
-    { Chapter = null, Since = ".NET 4.5" };
+    {
+        Chapter = null, Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Reduzir cauda de latência (p99) consultando réplicas/regiões redundantes.",
+            "Failover rápido: usar o primeiro mirror/CDN que responder.",
+            "Serviços com latência imprevisível onde uma 2ª tentativa paralela compensa.",
+        },
+    };
 
     // A réplica i tem latência decrescente: a de índice 0 é a mais lenta.
     private static async Task<int> CallReplica(int i, int replicas, int baseMs, CancellationToken ct)

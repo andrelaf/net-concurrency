@@ -62,7 +62,15 @@ public sealed class WaitAsyncTimeoutDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { WorkMs, TimeoutMs })
-    { Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono", Since = ".NET 6" };
+    {
+        Chapter = "Cap. 11 · Cancelando Trabalho Assíncrono", Since = ".NET 6",
+        UseCases = new[]
+        {
+            "Aplicar timeout a uma chamada externa (HTTP, BD) cujo SDK não oferece um.",
+            "Cortar operações que podem travar, liberando o thread/recurso.",
+            "Impor um SLA de latência a uma dependência lenta.",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

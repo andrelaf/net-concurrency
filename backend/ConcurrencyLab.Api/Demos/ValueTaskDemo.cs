@@ -58,7 +58,15 @@ public sealed class ValueTaskDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Calls })
-    { Chapter = null, Since = ".NET Core 2.1" };
+    {
+        Chapter = null, Since = ".NET Core 2.1",
+        UseCases = new[]
+        {
+            "APIs quentes com cache que quase sempre acerta (leitura de buffer, memoização).",
+            "Métodos chamados milhões de vezes onde alocar uma Task pesa no GC.",
+            "Streams/pipelines de alta vazão (ReadAsync que costuma já ter dados prontos).",
+        },
+    };
 
     private static readonly int[] Cache = Enumerable.Range(0, 1024).ToArray();
 

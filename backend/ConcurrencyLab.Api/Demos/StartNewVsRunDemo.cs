@@ -71,7 +71,15 @@ public sealed class StartNewVsRunDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Tasks, DelayMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Iniciar trabalho em background a partir de um serviço/handler — sempre Task.Run.",
+            "Descarregar cálculo CPU-bound do thread de requisição sem bloquear.",
+            "Só recorra a StartNew para scheduler customizado ou TaskCreationOptions.LongRunning (com Unwrap).",
+        },
+    };
 
     public override async Task<RunVariant> RunAntipatternAsync(RunArgs args, CancellationToken ct)
     {

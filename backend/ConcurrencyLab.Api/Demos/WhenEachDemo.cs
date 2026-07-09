@@ -55,7 +55,15 @@ public sealed class WhenEachDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Tasks, MaxDelayMs })
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 9" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 9",
+        UseCases = new[]
+        {
+            "Mostrar resultados conforme chegam (ex.: respostas de N provedores à medida que respondem).",
+            "Processar conclusões de muitas tasks sem esperar a última (menor latência percebida).",
+            "Atualizar UI/relatório incrementalmente enquanto o fan-out ainda roda.",
+        },
+    };
 
     // Cria tasks com atrasos variados e determinísticos.
     private static Task<int>[] Build(int n, int maxDelay, CancellationToken ct) =>

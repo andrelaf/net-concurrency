@@ -39,6 +39,12 @@ public sealed record DemoInfo(
     /// Rendered as a chip so newer APIs stand out.
     /// </summary>
     public string? Since { get; init; }
+
+    /// <summary>
+    /// Concrete real-world scenarios where the pattern is the right tool.
+    /// Rendered as a "when to use" section in the UI.
+    /// </summary>
+    public IReadOnlyList<string> UseCases { get; init; } = Array.Empty<string>();
 }
 
 /// <summary>A single key metric surfaced after a run (e.g. "Lost updates: 4213").</summary>

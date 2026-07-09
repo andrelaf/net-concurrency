@@ -67,7 +67,15 @@ public sealed class DataflowDemo : DemoBase
         },
         SupportsRun: true,
         Parameters: new[] { Items })
-    { Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET (Dataflow)" };
+    {
+        Chapter = "Cap. 7 · TPL e Dataflow", Since = ".NET (Dataflow)",
+        UseCases = new[]
+        {
+            "Pipeline com estágios de paralelismo diferente (ex.: baixar → parsear → gravar).",
+            "ETL / processamento de mídia com back-pressure por estágio.",
+            "Fluxos com fan-out/fan-in e roteamento entre blocos.",
+        },
+    };
 
     // Estágio 1: transformação CPU-bound. Estágio 2: consumo CPU-bound.
     // O trabalho por item precisa ser não trivial para o pipeline paralelo

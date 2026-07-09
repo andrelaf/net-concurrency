@@ -62,5 +62,13 @@ public sealed class SyncOverAsyncDemo : DemoBase
         },
         SupportsRun: false,
         Parameters: Array.Empty<DemoParameter>())
-    { Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5" };
+    {
+        Chapter = "Cap. 5 · Programação Assíncrona com C#", Since = ".NET 4.5",
+        UseCases = new[]
+        {
+            "Ao portar código síncrono para async: torne a cadeia toda assíncrona.",
+            "Em bibliotecas, use ConfigureAwait(false) para não prender o contexto do chamador.",
+            "Diagnosticar deadlocks/esgotamento de thread pool sob carga.",
+        },
+    };
 }
